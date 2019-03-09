@@ -1,0 +1,15 @@
+﻿[PMC Code v5.0.5]|^!Enter||1|Window,2,Fast,0,1,Input,-1,-1,1|1|Macro1
+Groups=Start:1
+1|WinActivate||1|333|WinActivate||Google Chrome|||
+2|Continue, Continue, FoundX, FoundY, 0|0, 0, 2560, 1080, C:\Users\red\Documents\projects\goto-devtools\assets\1.png|1|0|ImageSearch||Window|||
+3|If Image/Pixel Found||1|0|If_Statement|||||
+4|[MsgBox]|Found!`n|1|0|MsgBox|0||||
+5|Left Move & Click|%FoundX%, %FoundY% Left, 1|1|10|Click|||||
+6|[Text]|^p|1|0|Send|||||
+7|[Text]|batata`n|1|0|SendRaw|||||
+8|[Text]|^g`n|1|0|Send|||||
+9|[Text]|100|1|0|SendRaw|||||
+10|[Else]|Else|1|0|If_Statement|||||
+11|[Text]|^+i|1|0|Send|||||
+12|[End If]|EndIf|1|0|If_Statement|||||
+

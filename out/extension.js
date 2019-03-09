@@ -1,0 +1,31 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const vscode = require("vscode");
+const child_process_1 = require("child_process");
+function activate(context) {
+    let splitPath = vscode.workspace.rootPath || '';
+    splitPath = splitPath.replace(/\\/g, '/');
+    const openOnDevTools = (breakPoint = false) => {
+        if (!vscode.window.activeTextEditor) {
+            return;
+        }
+        const activeTextEditor = vscode.window.activeTextEditor;
+        const line = activeTextEditor.selection.start.line;
+        const [, filePath] = activeTextEditor.document.uri.path.split(splitPath);
+        console.log(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`);
+        child_process_1.exec(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`, (error, stdout, stderr) => {
+            console.log(error);
+            console.log(stdout);
+            console.log(stderr);
+        });
+    };
+    const disposableOpenOnDevTools = vscode.commands.registerCommand('extension.gotodevtools', openOnDevTools);
+    const disposableOpenOnDevToolsBreakPoint = vscode.commands.registerCommand('extension.gotodevtoolsBreakpoint', () => openOnDevTools(true));
+    context.subscriptions.push(disposableOpenOnDevTools);
+    context.subscriptions.push(disposableOpenOnDevToolsBreakPoint);
+}
+exports.activate = activate;
+// this method is called when your extension is deactivated
+function deactivate() { }
+exports.deactivate = deactivate;
+//# sourceMappingURL=extension.js.map
