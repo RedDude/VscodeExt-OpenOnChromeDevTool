@@ -25,7 +25,6 @@ function activate(context) {
     context.subscriptions.push(disposableOpenOnDevToolsBreakPoint);
 }
 exports.activate = activate;
-// this method is called when your extension is deactivated
 function deactivate() { }
 exports.deactivate = deactivate;
 //# sourceMappingURL=extension.js.map

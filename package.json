@@ -2,7 +2,9 @@
 	"name": "gotodevtools",
 	"displayName": "Open File on Chrome DevTool",
 	"description": "",
+	"publisher": "rinaldobueno",
 	"version": "0.0.1",
+	"repository": {"url": "https://github.com/RedDude/VscodeExt-OpenOnChromeDevTool"},
 	"engines": {
 		"vscode": "^1.32.0"
 	},
