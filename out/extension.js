@@ -10,8 +10,18 @@ function activate(context) {
             return;
         }
         const activeTextEditor = vscode.window.activeTextEditor;
-        const line = activeTextEditor.selection.start.line;
-        const [, filePath] = activeTextEditor.document.uri.path.split(splitPath);
+        const line = activeTextEditor.selection.start.line + 1;
+        let filePath = '';
+        const folders = vscode.workspace.workspaceFolders || [({ name: 'src' })];
+        folders.forEach((folder) => {
+            if (filePath) {
+                return;
+            }
+            const [, file] = activeTextEditor.document.uri.path.split(folder.name);
+            if (file) {
+                filePath = file;
+            }
+        });
         console.log(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`);
         child_process_1.exec(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`, (error, stdout, stderr) => {
             console.log(error);
