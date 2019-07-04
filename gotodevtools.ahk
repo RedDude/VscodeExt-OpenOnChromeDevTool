@@ -16,12 +16,12 @@ If breakPointParam == "false"
     breakPointParam  := false
 }
 
-
+; fileParam := StrReplace(fileParam, "${separator}", "batatata")
 ; WinRestore
 WinActivate, ahk_exe chrome.exe
 
-Sleep, 100
-CoordMode, Pixel, Window
+Sleep, 300
+;CoordMode, Pixel, Window
 ; ImageSearch, FoundX, FoundY, 0, 0, 2560, 1080, assets\0.png
 ; If ErrorLevel != 0
 ; {
@@ -61,8 +61,16 @@ CoordMode, Pixel, Window
 ;     }
 ; }
 
+FocusDevTools()
 GoToSouces()
 Open(fileParam, lineParam, breakPointParam)
+
+FocusDevTools() {
+    Send, ^+c
+    Sleep, 500
+    Send, ^+c
+    Sleep, 500
+}
 
 GoToSouces() {
     Send, ^+p
@@ -76,7 +84,7 @@ GoToSouces() {
 }
 
 Open(file, line, breakPoint) {
-    Send, ^p
+    Send, ^{p}
     Sleep, 10
     SendRaw,
     (LTrim
@@ -84,13 +92,13 @@ Open(file, line, breakPoint) {
      )
     Sleep, 500
     Send, {Enter}
-    Send, ^g
+    Send, ^{g}
     Sleep, 60
     SendRaw, %line%
     Send, {Enter}
 
     If breakPoint != false
     {
-        Send, ^b
+        Send, ^{b}
     }
 }

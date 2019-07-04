@@ -26,7 +26,8 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 
 		console.log(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`);
-
+		// filePath = filePath.replace(new RegExp('/', 'g'), '${separator}');
+		// console.log(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`);
 		exec(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`, (error: any, stdout: any, stderr: any) => {
 			console.log(error);
 			console.log(stdout);

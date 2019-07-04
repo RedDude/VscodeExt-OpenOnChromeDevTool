@@ -23,6 +23,8 @@ function activate(context) {
             }
         });
         console.log(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`);
+        // filePath = filePath.replace(new RegExp('/', 'g'), '${separator}');
+        // console.log(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`);
         child_process_1.exec(`${context.extensionPath}/gotodevtools.exe "${filePath}" ${String(line)} ${breakPoint}`, (error, stdout, stderr) => {
             console.log(error);
             console.log(stdout);
