@@ -4,7 +4,9 @@
 	"description": "",
 	"publisher": "rinaldobueno",
 	"version": "0.0.2",
-	"repository": {"url": "https://github.com/RedDude/VscodeExt-OpenOnChromeDevTool"},
+	"repository": {
+		"url": "https://github.com/RedDude/VscodeExt-OpenOnChromeDevTool"
+	},
 	"engines": {
 		"vscode": "^1.32.0"
 	},
